@@ -15,8 +15,7 @@ const SignupForm = () => {
   const [addUser] = useMutation(ADD_USER);
 
   // This function handles the change event for form input fields.
-  //It destructures the name and value from the event.target object.
-  //It uses the spread operator ({...userFormData}) to create a shallow copy of the userFormData object and updates the state with the new name and value key-value pair.
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUserFormData({ ...userFormData, [name]: value });
@@ -32,9 +31,6 @@ const SignupForm = () => {
       event.stopPropagation();
     }
     //It makes an asynchronous call to the addUser function with the userFormData as variables.
-    //If the call is successful, it logs in the user with the token returned from the server using Auth.login().
-    //If there is an error, it logs the error to the console and sets the showAlert state to true.
-    //Finally, it resets the userFormData state to empty values for username, email, and password.
     try {
       const { data } = await addUser({ variables: { ...userFormData }});
     
